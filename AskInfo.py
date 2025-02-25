@@ -15,14 +15,17 @@ def main():
         return render_template('InputOutput.html')
     
 def GetInfo():
+    global password, username
     username=request.form.get('txtusername')
     password=request.form.get('txtpassword')
     AddFile()
     print(username + password)
-    
+
 def AddFile():
-    filename=personinfo
-    pythfile = open(filename + filetype, "x")
+    filename="personinfo"
+    pythfile = open(filename + ".doc", "w")
+    pythfile.write("Usrename:" + username + "\nPassword:" + password)
+    
 if __name__ == "__main__":
     app.run()
  
