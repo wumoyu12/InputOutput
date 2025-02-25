@@ -22,9 +22,14 @@ def GetInfo():
     print(username + password)
 
 def AddFile():
-    filename="personinfo"
-    pythfile = open(filename + ".doc", "w")
+    filename= username + "info.doc"
+    pythfile = open(filename, "w")
     pythfile.write("Usrename:" + username + "\nPassword:" + password)
+
+def ReadFile():
+    pythfile = open(filename, "r")
+    info=file.readlines()
+    print(info)
     
 if __name__ == "__main__":
     app.run()
