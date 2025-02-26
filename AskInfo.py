@@ -15,7 +15,7 @@ def main():
 
 @app.route('/info', methods=['GET', 'POST'])
 def GetInfo():
-    global useremail, userpasswod;
+    global useremail, userpassword;
     useremail=request.form.get('txtusername')
     userpassword=request.form.get('txtpassword')
     
