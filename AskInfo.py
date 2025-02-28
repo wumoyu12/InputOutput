@@ -15,19 +15,37 @@ def main():
 
 @app.route('/info', methods=['GET', 'POST'])
 def GetInfo():
-    global useremail, userpassword;
+    global useremail,userpassword;
     useremail=request.form.get('txtusername')
+    while (useremail==""):
+        return render_template('InputOutput.html', valid="Please enter all information, try again")
+
     userpassword=request.form.get('txtpassword')
+    while (userpassword==""):
+        return render_template('InputOutput.html', valid="Please enter all information, try again")
     
-    print(useremail + userpasswod)
     FileConnectivity()
-    
     return render_template('ouput.html', username=useremail, password=userpassword)
 
+
 def FileConnectivity():
+    global exist, filename
     filename = "userinfo.doc"
+    fileDir = os.path.dirname(os.path.realpath("__file__"))
+    fileexist = bool(path.exists(filename))
+    if (fileexist == True):
+        WriteFile()
+    else:
+        CreateFile()
+        WriteFile()
+
+def CreateFile()
+    pythfile = open(filename, "x")
+    pythfile.close();
+
+def WriteFile():
     pythfile = open(filename, "w")
-    pythfile.write("User Email:" + useremail + "Password:" + userpasswod)
+    pythfile.write(useremail + "," + userpassword)
     pythfile.close();
 
 if __name__ == "__main__":
