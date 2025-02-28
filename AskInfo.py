@@ -39,7 +39,7 @@ def FileConnectivity():
         CreateFile()
         WriteFile()
 
-def CreateFile()
+def CreateFile():
     pythfile = open(filename, "x")
     pythfile.close();
 
