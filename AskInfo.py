@@ -20,7 +20,6 @@ def GetInfo():
     userpassword=request.form.get('txtpassword')
     
     while (useremail=="" or userpassword==""):
-        print(useremail + userpassword)
         return render_template('InputOutput.html', valid="Please enter all information.")
     
     FileConnectivity()
